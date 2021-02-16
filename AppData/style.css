@@ -6,7 +6,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     font-family: "Comfortaa";
     font-size: var(--font-size);
     background-color: var(--background_color);
