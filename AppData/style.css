@@ -1,12 +1,12 @@
 :root {
-    --background_color: rgb(245,245,245);
+    --background_color: rgb(245, 245, 245);
     --font-size: 1.9vmin;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100vh;
     font-family: "Comfortaa";
     font-size: var(--font-size);
     background-color: var(--background_color);
@@ -18,8 +18,18 @@ body {
     justify-content: center;
 }
 
-canvas {
-    border-radius: 2vmin;
+#container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
@@ -44,22 +54,13 @@ input {
     border: none;
 }
 
-#container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .Div {
     display: inline-flex;
     align-items: center;
     background-color: white;
-    border-radius:2vmin;
+    border-radius: 2vmin;
     padding-inline: 2vmin;
     margin: 1vmin;
-
 }
 
 .Div p {
@@ -71,7 +72,44 @@ input {
     background-color: black;
 }
 
+canvas {
+    border-radius: 2vmin;
+}
+
 footer {
     text-align: center;
     margin-bottom: 2vmin;
+}
+
+@media (max-width:892px) {
+    .controls-container {
+        flex-direction: column;
+        width: 80%;
+    }
+    .button-container {
+        margin: 1rem 0 0;
+        width: 100%;
+    }
+    .button-container button {
+        width: 32%;
+        padding: 1rem;
+        padding-inline: 0;
+        font-size: 1.2rem;
+    }
+    .controls-container div:nth-child(2) {
+        margin: 1rem 0 1rem -1.5rem;
+    }
+    .Div {
+        width: 97%;
+        display: flex;
+        justify-content: center;
+        padding-inline: 0;
+        margin: 0 0 0 -1.5rem;
+    }
+    .Div p {
+        padding-inline: 0;
+    }
+    .controls-container p {
+        font-size: 1.5rem;
+    }
 }
