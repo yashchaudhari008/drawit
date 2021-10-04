@@ -26,7 +26,6 @@ button {
     border-radius: 1vmin;
     outline: none;
     border: 1px solid black;
-    padding: 4vmin;
     padding-inline: 2vmin;
     font-family: "Comfortaa";
     font-size: 30px;
@@ -41,6 +40,12 @@ button {
 button:hover {
     background-color: black;
     color: white;
+}
+
+#buttonHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input {
