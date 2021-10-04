@@ -10,11 +10,13 @@ Everyone must follow the code of conduct thoughtbot's project codebases, issue t
 3. Create new branch "test".
 4. Make changes and test them.
 5. Commit your changes.
-6. Submit a Pull Request with a meaning full header.
+6. Submit a PR with meaningful header and mention issue for which changes are made(if any) in PR description.
 7. Wait till PR get reviewed ✔ .
 
 ### Please Note, Bad Pull Requests Are Not Accepted ❌!
 - Make sure you don't make a single line changes like renaming a variable.
+- If your PR contains indentation changes, it will be not accepted.
+- Do not make duplicate PRs.
 
 - - -
 THANKS ! Keep Contributing.✌
