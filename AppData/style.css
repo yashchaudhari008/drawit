@@ -33,11 +33,18 @@ button {
   font-size: var(--font-size);
   background-color: white;
   color: black;
+
 }
 
 button:hover {
   background-color: black;
   color: white;
+}
+
+#buttonHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input {
