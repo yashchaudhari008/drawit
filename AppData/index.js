@@ -67,3 +67,12 @@ function fullScreen() {
     let fs = fullscreen();
     fullscreen(!fs);
 }
+
+function backToHome()
+{
+    if(confirm("Are you sure you want to exit?"))
+    {
+        location.href="../index.html";
+    }
+    else{}
+}
