@@ -68,7 +68,7 @@ function fullScreen() {
     fullscreen(!fs);
 }
 
-function backtohome()
+function backToHome()
 {
     if(confirm("Are you sure you want to exit?"))
     {
