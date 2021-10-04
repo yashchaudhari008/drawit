@@ -42,6 +42,7 @@ button {
     font-size: var(--font-size);
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 button:hover {
@@ -52,6 +53,7 @@ button:hover {
 input {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .Div {
@@ -85,37 +87,65 @@ footer {
     .controls-container {
         width: 90%;
         max-width: 700px;
+        margin: 1rem 0 4rem;
+        align-items: flex-start;
     }
     .button-container {
         display: flex;
         flex-direction: column;
-        margin: 1rem 1rem 0 0;
+        margin: 0rem 1rem 0 0;
         width: 30%;
     }
     .button-container button {
         width: 100%;
-        margin: 0 0 1rem;
         padding: 1rem;
         padding-inline: 0;
         font-size: 1rem;
     }
+    .button-container button.options {
+        border: none;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .button-container {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown {
+        display: none;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+    }
+    .show {
+        display: block;
+    }
+    .dropdown button {
+        display: block;
+        width: 100%;
+        margin: 0 0 0rem;
+        border: none;
+    }
     #controls {
         padding: 0;
-        margin: 1rem 1rem 1rem 0;
+        margin: 0rem 1rem 0rem 0;
         width: 35%;
         display: flex;
         flex-direction: column;
     }
+    #controls p {
+        margin: 1rem 0 0;
+    }
     #variables {
         width: 30%;
-        font-size: 2rem;
     }
     .Div {
-        /* width: 97%; */
         display: flex;
         justify-content: center;
         padding-inline: 0;
         margin: 0;
+        font-size: 1.5rem;
     }
     .Div p {
         padding-inline: 0;

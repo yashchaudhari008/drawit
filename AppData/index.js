@@ -67,3 +67,14 @@ function fullScreen() {
     let fs = fullscreen();
     fullscreen(!fs);
 }
+
+let dropDown = document.querySelector('.dropdown');
+let options = document.querySelector('.options');
+options.addEventListener('click', () => {
+    dropDown.classList.toggle('show');
+})
+document.addEventListener('click', (e) => {
+    if (e.target !== options) {
+        dropDown.classList.remove('show');
+    }
+})
