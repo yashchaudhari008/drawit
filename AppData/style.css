@@ -83,33 +83,44 @@ footer {
 
 @media (max-width:892px) {
     .controls-container {
-        flex-direction: column;
-        width: 80%;
+        width: 90%;
+        max-width: 700px;
     }
     .button-container {
-        margin: 1rem 0 0;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 1rem 0 0;
+        width: 30%;
     }
     .button-container button {
-        width: 32%;
+        width: 100%;
+        margin: 0 0 1rem;
         padding: 1rem;
         padding-inline: 0;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
-    .controls-container div:nth-child(2) {
-        margin: 1rem 0 1rem -1.5rem;
+    #controls {
+        padding: 0;
+        margin: 1rem 1rem 1rem 0;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+    }
+    #variables {
+        width: 30%;
+        font-size: 2rem;
     }
     .Div {
-        width: 97%;
+        /* width: 97%; */
         display: flex;
         justify-content: center;
         padding-inline: 0;
-        margin: 0 0 0 -1.5rem;
+        margin: 0;
     }
     .Div p {
         padding-inline: 0;
     }
-    .controls-container p {
-        font-size: 1.5rem;
+    .change-size {
+        display: none;
     }
 }
