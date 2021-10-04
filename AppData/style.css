@@ -65,6 +65,10 @@ input {
 .Div p {
   padding-inline: 2vmin;
 }
+.Div svg {
+  margin: 1vmin 0;
+  padding-inline: 2vmin;
+}
 
 .Div:hover {
   color: white;
