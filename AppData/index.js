@@ -1,5 +1,5 @@
 let sFactor = 0.85;
-
+let timer = null;
 function setup() {
     background_colour = 'white';
     stroke_colour = 'black';
@@ -24,6 +24,9 @@ function setup() {
 }
 
 function keyTyped() {
+    stroke_colour = pen_colour_picker.value();
+    let r = document.querySelector(':root');
+    
     let tempKey = key.toUpperCase();
     if (tempKey == 'Q') {
         stroke_weight += 1;
@@ -31,7 +34,20 @@ function keyTyped() {
     else if (tempKey == 'A' && stroke_weight > 1) {
         stroke_weight -= 1;
     }
+    
+    stroke_colour = pen_colour_picker.value();
+    r.style.setProperty('--pen-strokeColour',stroke_colour);
+    r.style.setProperty('--pen-stroke',`${stroke_weight}px`);
     pen_size_display.html('Pen Size: '+stroke_weight);
+
+    document.getElementById("pen_preview").className="show";
+    if(timer!=null)
+    {
+        window.clearTimeout(timer); 
+    }
+    timer = setTimeout(function () {
+        document.getElementById("pen_preview").className="hide";
+    },2500);
 }
 
 function draw() {

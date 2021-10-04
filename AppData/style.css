@@ -1,6 +1,8 @@
 :root {
     --background_color: rgb(245,245,245);
     --font-size: 1.9vmin;
+    --pen-stroke: 3px;
+    --pen-strokeColour : black;
 }
 
 html, body {
@@ -57,6 +59,28 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#pen_preview {
+    height: var(--pen-stroke);
+    width: var(--pen-stroke);
+    background-color: var(--pen-strokeColour);
+    position: absolute;
+    border-radius: 50%;
+    top:10%;
+    left: 70%;
+}
+
+#canvasHolder {
+    position: relative;
+}
+
+.show {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
 }
 
 .Div {
