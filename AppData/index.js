@@ -1,5 +1,5 @@
 let sFactor = 0.85;
-
+let timer = null;
 function setup() {
     background_colour = 'white';
     stroke_colour = 'black';
@@ -41,8 +41,11 @@ function keyTyped() {
     pen_size_display.html('Pen Size: '+stroke_weight);
 
     document.getElementById("pen_preview").className="show";
-
-    setTimeout(function () {
+    if(timer!=null)
+    {
+        window.clearTimeout(timer); 
+    }
+    timer = setTimeout(function () {
         document.getElementById("pen_preview").className="hide";
     },2500);
 }
