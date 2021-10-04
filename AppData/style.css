@@ -32,6 +32,10 @@ body {
     align-items: center;
 }
 
+.hide {
+    display: none;
+}
+
 button {
     border-radius: 1vmin;
     outline: none;
@@ -101,6 +105,9 @@ footer {
         padding: 1rem;
         padding-inline: 0;
         font-size: 1rem;
+    }
+    .hide {
+        display: block;
     }
     .button-container button.options {
         border: none;
