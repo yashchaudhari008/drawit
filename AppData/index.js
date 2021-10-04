@@ -34,6 +34,16 @@ function keyTyped() {
     pen_size_display.html('Pen Size: '+stroke_weight);
 }
 
+function incF() {
+    stroke_weight +=1;
+    pen_size_display.html('Pen Size: '+stroke_weight);
+}
+function decF() {
+    if(stroke_weight>1){
+    stroke_weight -=1;
+}
+    pen_size_display.html('Pen Size: '+stroke_weight);
+}
 function draw() {
     if (mouseIsPressed) {
         stroke(stroke_colour);
