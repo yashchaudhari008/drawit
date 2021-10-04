@@ -16,15 +16,17 @@
         }
         .threebutton
         {
-            margin:10px;
-            padding: 20px;
+            margin:10px 5px;
+            padding: 8px 30px;
+            font-size: 13px;
+            font-weight: bold;
         }
     </style>
 
     <body>
         <div id='container'>
-            <div style="display: inline-flex; align-items: center;padding-top: 200px;">
-                <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+            <div style="display: inline-flex; align-items: center;padding-top:5px;">
+                <div style="flex-direction: row; justify-content: space-evenly;">
                     <button class="threebutton" onclick="clearCanvas();">Clear Canvas</button>
                     <button class="threebutton" onclick="saveCanvas('drawit_canvas');">Save Canvas</button>
                     <button class="threebutton" onclick="backtohome()">Back to Home</button>
@@ -37,7 +39,7 @@
             <div id='canvasHolder'>
             </div>
         </div>
-        <footer style="text-align: center;">
+        <footer style="text-align: center; margin-top: -70px;">
             © Copyright 2020-21. Made with <span>&#10084</span> by Yash Chaudhari.
         </footer>
     </body>
