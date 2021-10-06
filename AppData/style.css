@@ -91,16 +91,16 @@ footer {
 
 @media (max-width:892px) {
     .controls-container {
-        width: 90%;
+        width: 100%;
         max-width: 700px;
-        margin: 1rem 0 4rem;
+        margin: 0.5rem 0;
         align-items: flex-start;
     }
     .button-container {
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        display: inline-block;
         margin: 0rem 1rem 0 0;
-        width: 30%;
+        width: 25%;
     }
     .button-container button {
         width: 100%;
@@ -116,10 +116,6 @@ footer {
         font-size: 1.5rem;
         margin: 0;
     }
-    .button-container {
-        position: relative;
-        display: inline-block;
-    }
     .dropdown {
         display: none;
         width: 100%;
@@ -133,33 +129,49 @@ footer {
     .dropdown button {
         display: block;
         width: 100%;
-        margin: 0 0 0rem;
+        margin: 0rem;
         border: none;
     }
     #controls {
         padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
         margin: 0rem 1rem 0rem 0;
-        width: 35%;
-        display: flex;
-        flex-direction: column;
+        width: 50%;
     }
     #controls p {
-        margin: 1rem 0 0;
+        margin: 0;
     }
     #variables {
-        width: 30%;
-    }
-    .Div {
+        width: 20%;
         display: flex;
         justify-content: center;
-        padding-inline: 0;
+    }
+    .Div {
         margin: 0;
         font-size: 1.5rem;
+        padding-inline: 0;
     }
     .Div p {
         padding-inline: 0;
     }
     .change-size {
         display: none;
+    }
+    footer {
+        margin: 0;
+    }
+}
+
+@media (min-width:530px) and (max-width:892px) {
+    #controls {
+        width: 50%;
+        padding: 0.5rem;
+    }
+    #controls p {
+        font-size: 1rem;
+    }
+    .button-container button.options, .Div {
+        font-size: 1rem;
     }
 }
