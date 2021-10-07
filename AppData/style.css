@@ -34,12 +34,14 @@ button {
     font-family: "Comfortaa";
     font-size: var(--font-size);
     background-color: white;
+    cursor: pointer;
     color: black;
 }
 
 button:hover {
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 #buttonHolder {
@@ -100,6 +102,7 @@ input {
 .Div:hover {
     color: white;
     background-color: black;
+    cursor: pointer;
 }
 
 footer {
