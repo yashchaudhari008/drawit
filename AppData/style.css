@@ -1,108 +1,111 @@
 :root {
-    --background_color: rgb(245,245,245);
-    --font-size: 1.9vmin;
-    --pen-stroke: 3px;
-    --pen-strokeColour : black;
+  --background_color: rgb(245, 245, 245);
+  --font-size: 1.9vmin;
+  --pen-stroke: 3px;
+  --pen-strokeColour: black;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: "Comfortaa";
-    font-size: var(--font-size);
-    background-color: var(--background_color);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Comfortaa";
+  font-size: var(--font-size);
+  background-color: var(--background_color);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 canvas {
-    border-radius: 2vmin;
+  border-radius: 2vmin;
 }
 
 button {
-    border-radius: 1vmin;
-    outline: none;
-    border: 1px solid black;
-    margin: 2px;
-    padding: 1vmin;
-    padding-inline: 2vmin;
-    font-family: "Comfortaa";
-    font-size: var(--font-size);
-    background-color: white;
-    color: black;
+  border-radius: 1vmin;
+  outline: none;
+  border: 1px solid black;
+  margin: 2px;
+  padding: 1vmin;
+  padding-inline: 2vmin;
+  font-family: "Comfortaa";
+  font-size: var(--font-size);
+  background-color: white;
+  color: black;
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 #buttonHolder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 #container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #pen_preview {
-    height: var(--pen-stroke);
-    width: var(--pen-stroke);
-    background-color: var(--pen-strokeColour);
-    position: absolute;
-    border-radius: 50%;
-    top:10%;
-    left: 70%;
+  height: var(--pen-stroke);
+  width: var(--pen-stroke);
+  background-color: var(--pen-strokeColour);
+  position: absolute;
+  border-radius: 50%;
+  top: 10%;
+  left: 70%;
 }
 
 #canvasHolder {
-    position: relative;
+  position: relative;
+}
+
+#switch {
+  margin: 1vw;
 }
 
 .show {
-    display: inline-block;
+  display: inline-block;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .Div {
-    display: inline-flex;
-    align-items: center;
-    background-color: white;
-    border-radius:2vmin;
-    padding-inline: 2vmin;
-    margin: 1vmin;
-
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 2vmin;
+  padding-inline: 2vmin;
+  margin: 1vmin;
 }
 
 .Div p {
-    padding-inline: 2vmin;
+  padding-inline: 2vmin;
 }
 
 .Div:hover {
-    color: white;
-    background-color: black;
+  color: white;
+  background-color: black;
 }
 
 footer {
-    text-align: center;
-    margin-bottom: 2vmin;
+  text-align: center;
+  margin-bottom: 2vmin;
 }
