@@ -76,7 +76,7 @@ input {
 }
 
 #switch {
-  margin: 1vw;
+  margin-right: 1vmin;
 }
 
 .show {
