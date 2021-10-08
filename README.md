@@ -13,7 +13,7 @@ Make sure to ⭐ the repo.
  
 ## Contributing
 - You can find issues to work on [here.](https://github.com/yashchaudhari008/drawit/issues)
-- Found a bug? or have a good suggestion [create an fresh issue here.](https://github.com/yashchaudhari008/drawit/issues/new)
+- Found a bug? or have a good suggestion [create a fresh issue here.](https://github.com/yashchaudhari008/drawit/issues/new)
 
 For more details, check [CONTRIBUTING.md](CONTRIBUTING.md)
 
