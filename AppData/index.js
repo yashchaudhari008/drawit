@@ -28,9 +28,9 @@ function changeStrokeWeight(value) {
     // stroke weight can not be < 1
     if (stroke_weight === 1 && value < 0)
         return;
-
+    
     //stroke weight can not be > 90
-    if (stroke_weight === 90 && value > 0)
+    if (stroke_weight === 90 && value > 0) 
         return;
 
     stroke_weight += value;
