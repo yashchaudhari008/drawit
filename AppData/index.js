@@ -1,9 +1,11 @@
 let sFactor = 0.85;
 let timer = null;
+let current_status; //1 for pen, 0 for eraser.
 function setup() {
     background_colour = 'white';
     stroke_colour = 'black';
     stroke_weight = 3;
+    current_status = 1;
 
     canvas = createCanvas(windowWidth * (sFactor + 0.1), windowHeight * sFactor);
     canvas.parent('#canvasHolder');
@@ -33,7 +35,7 @@ function changeStrokeWeight(value) {
 
     stroke_weight += value;
     let root = document.querySelector(':root');
-    root.style.setProperty('--pen-strokeColour', stroke_colour);
+    // root.style.setProperty('--pen-strokeColour', stroke_colour);
     root.style.setProperty('--pen-stroke', `${stroke_weight}px`);
     pen_size_display.html('Pen Size: ' + stroke_weight);
 
@@ -46,7 +48,7 @@ function changeStrokeWeight(value) {
 
     timer = setTimeout(function () {
         document.getElementById("pen_preview").className = "hide";
-    }, 2500);
+    }, 1000);
 }
 
 function draw() {
@@ -60,8 +62,12 @@ function draw() {
         clearCanvas();
     }
 
-    if (pen_colour_picker.value() != stroke_colour) {
+    if (current_status) {
+        //Dealing with Pen
         stroke_colour = pen_colour_picker.value();
+    } else {
+        //Dealing with Eraser
+        stroke_colour = background_colour_picker.value();
     }
 
     // change pen stroke on long pressing keys Q/A
@@ -70,6 +76,22 @@ function draw() {
     }
     else if (keyIsDown(65)) {
         changeStrokeWeight(value = -1);
+    }
+}
+
+function keyTyped() {
+    let pressed_key = key.toUpperCase();
+
+    if (pressed_key == 'Z') {
+        //switch between pen and eraser
+        current_status ^= 1;
+
+        if (current_status) {
+            stroke_colour = pen_colour_picker.value();
+        }
+        else {
+            stroke_colour = background_colour_picker.value();
+        }
     }
 }
 
