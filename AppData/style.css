@@ -34,7 +34,6 @@ button {
     font-family: "Comfortaa";
     font-size: var(--font-size);
     background-color: white;
-    cursor: pointer;
     color: black;
 }
 
@@ -53,6 +52,10 @@ button:hover {
 input {
     background-color: transparent;
     border: none;
+}
+
+input[type=color] {
+    cursor: pointer;
 }
 
 #container {
@@ -102,7 +105,7 @@ input {
 .Div:hover {
     color: white;
     background-color: black;
-    cursor: pointer;
+    cursor: default;
 }
 
 footer {
