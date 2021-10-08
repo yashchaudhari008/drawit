@@ -80,6 +80,10 @@ input[type=color] {
     position: relative;
 }
 
+#switch {
+    margin-right: 1vmin;
+}
+
 .show {
     display: inline-block;
 }
