@@ -40,6 +40,7 @@ button {
 button:hover {
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 #buttonHolder {
@@ -51,6 +52,10 @@ button:hover {
 input {
     background-color: transparent;
     border: none;
+}
+
+input[type=color] {
+    cursor: pointer;
 }
 
 #container {
@@ -104,6 +109,7 @@ input {
 .Div:hover {
     color: white;
     background-color: black;
+    cursor: default;
 }
 
 footer {
