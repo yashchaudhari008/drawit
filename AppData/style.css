@@ -1,11 +1,12 @@
 :root {
-    --background_color: rgb(245,245,245);
+    --background_color: rgb(245, 245, 245);
     --font-size: 1.9vmin;
     --pen-stroke: 3px;
-    --pen-strokeColour : black;
+    --pen-strokeColour: black;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -41,10 +42,10 @@ button:hover {
     background-color: black;
     color: white;
     cursor: pointer;
-    -webkit-transition: background-color .4s ease-out;
-    -moz-transition: background-color .4s ease-out;
-    -o-transition: background-color .4s ease-out;
-    transition: background-color .4s ease-out;
+    -webkit-transition: background-color 0.4s ease-out;
+    -moz-transition: background-color 0.4s ease-out;
+    -o-transition: background-color 0.4s ease-out;
+    transition: background-color 0.4s ease-out;
 }
 
 #buttonHolder {
@@ -58,7 +59,7 @@ input {
     border: none;
 }
 
-input[type=color] {
+input[type="color"] {
     cursor: pointer;
 }
 
@@ -70,16 +71,16 @@ input[type=color] {
     justify-content: center;
 }
 
-#block{
+#appName {
     font-size: 10vmin;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 5vmin;
     border-radius: 3vmin;
     border: 2px dashed black;
-    transition: transform .6s;
+    transition: transform 1s;
 }
 
-#block:hover{
+#appName:hover {
     transform: scale(1.1);
 }
 
@@ -89,7 +90,7 @@ input[type=color] {
     background-color: var(--pen-strokeColour);
     position: absolute;
     border-radius: 50%;
-    top:10%;
+    top: 10%;
     left: 70%;
 }
 
@@ -113,10 +114,9 @@ input[type=color] {
     display: inline-flex;
     align-items: center;
     background-color: white;
-    border-radius:2vmin;
+    border-radius: 2vmin;
     padding-inline: 2vmin;
     margin: 1vmin;
-
 }
 
 .Div p {
