@@ -41,6 +41,10 @@ button:hover {
     background-color: black;
     color: white;
     cursor: pointer;
+    -webkit-transition: background-color 0.4s ease-out;
+    -moz-transition: background-color 0.4s ease-out;
+    -o-transition: background-color 0.4s ease-out;
+    transition: background-color 0.4s ease-out;
 }
 
 #buttonHolder {
@@ -64,6 +68,20 @@ input[type=color] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#appName {
+    font-size: 10vmin;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5vmin;
+    border-radius: 3vmin;
+    border: 2px dashed black;
+    transition: transform .6s;
+    transition-delay: .3s;
+}
+
+#appName:hover {
+    transform: scale(1.1);
 }
 
 #pen_preview {
@@ -99,7 +117,6 @@ input[type=color] {
     border-radius:2vmin;
     padding-inline: 2vmin;
     margin: 1vmin;
-
 }
 
 .Div p {
