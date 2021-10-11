@@ -19,17 +19,20 @@
     <body>
         <div id='container'>
         
-            <div style="display: inline-flex; align-items: center;">
+            <div class="sub-container">
                 <p id='switch'>Press Z to toggle Pen/Eraser</p>
                 <div>
-                    <button onclick="clearCanvas();">Clear Canvas</button>
-                    <button onclick="saveCanvas('drawit_canvas');">Save Canvas</button>
-                    <button onclick="backToHome()">Back to Home</button>
+                    <button class="drw-btn" onclick="clearCanvas();">Clear Canvas</button>
+                    <button class="drw-btn" onclick="saveCanvas('drawit_canvas');">Save Canvas</button>
+                    <button class="drw-btn" onclick="backToHome()">Back to Home</button>
                 </div>
-                <div class='Div' id='controls'> </div>
-                <div class='Div' id='variables'> </div>
-                <button onclick="changeStrokeWeight(value = 1)"> + </button>
-                <button onclick="changeStrokeWeight(value = -1)"> - </button>
+                <div class='drw-control-panel' id='controls'> </div>
+                <div class='drw-control-panel drw-panel-btn' id='variables'>
+                    <button class="drw-btn drw-plus" onclick="changeStrokeWeight(value = 1)"> + </button>
+                    <button class="drw-btn drw-minus" onclick="changeStrokeWeight(value = -1)"> - </button>    
+                </div>
+                <!-- <button class="drw-btn" onclick="changeStrokeWeight(value = 1)"> + </button>
+                <button class="drw-btn" onclick="changeStrokeWeight(value = -1)"> - </button> -->
                 <p>Press Q & A to change pen-size.</p>
             </div>
 

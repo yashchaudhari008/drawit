@@ -24,7 +24,13 @@ canvas {
     border-radius: 2vmin;
 }
 
-button {
+.sub-container{
+    display: inline-flex; 
+    align-items: center; 
+    margin-bottom: 4px;
+}
+
+.drw-btn {
     border-radius: 1vmin;
     outline: none;
     border: 1px solid black;
@@ -92,23 +98,43 @@ input[type=color] {
     display: none;
 }
 
-.Div {
+.drw-control-panel {
     display: inline-flex;
     align-items: center;
     background-color: white;
     border-radius:2vmin;
     padding-inline: 2vmin;
     margin: 1vmin;
-
+    border: 1px solid #333;
 }
 
-.Div p {
+.drw-panel-btn{
+    width: 150px;
+    position: relative;
+    text-align: center;
+}
+
+.drw-panel-btn p{
+    width: 100%;
+}
+
+.drw-control-panel p {
     padding-inline: 2vmin;
 }
 
-.Div:hover {
-    color: white;
-    background-color: black;
+.drw-plus{
+    position: absolute;
+    left: 6px;
+}
+
+.drw-minus{
+    position: absolute;
+    right: 6px;
+}
+
+.drw-control-panel:hover {
+    /* color: white; */
+    /* background-color: black; */
     cursor: default;
 }
 
