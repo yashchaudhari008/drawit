@@ -1,4 +1,4 @@
-[![DrawIt! logo](https://user-images.githubusercontent.com/60916242/136795213-67bfb00f-a69d-4346-9612-4586f8a3af78.png "DrawIt!")](https://user-images.githubusercontent.com/60916242/136795213-67bfb00f-a69d-4346-9612-4586f8a3af78.png "DrawIt!")
+[![DrawIt! logo](https://user-images.githubusercontent.com/60916242/136795213-67bfb00f-a69d-4346-9612-4586f8a3af78.png "DrawIt!")](https://yashchaudhari008.github.io/drawit/ "DrawIt!")
 
 A Simple Drawing App made using HTML, CSS, JS and [p5.js](https://p5js.org/).
 
