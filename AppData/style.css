@@ -77,7 +77,8 @@ input[type="color"] {
     padding: 5vmin;
     border-radius: 3vmin;
     border: 2px dashed black;
-    transition: transform 1s;
+    transition: transform .6s;
+    transition-delay: 1s;
 }
 
 #appName:hover {
