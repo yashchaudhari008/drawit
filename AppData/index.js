@@ -35,7 +35,7 @@ function changeStrokeWeight(value) {
 
     stroke_weight += value;
     let root = document.querySelector(':root');
-    // root.style.setProperty('--pen-strokeColour', stroke_colour);
+    root.style.setProperty('--pen-strokeColour', stroke_colour);
     root.style.setProperty('--pen-stroke', `${stroke_weight}px`);
     pen_size_display.html('Pen Size: ' + stroke_weight);
 
