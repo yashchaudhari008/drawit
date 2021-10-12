@@ -9,6 +9,8 @@ function setup() {
 
     canvas = createCanvas(windowWidth * (sFactor + 0.1), windowHeight * sFactor);
     canvas.parent('#canvasHolder');
+    canvas.elt.onmouseover = () => canvas.isMouseOver = true;
+    canvas.elt.onmouseout = () => canvas.isMouseOver = false;
     background(background_colour);
 
     createP('Background Colour: ').parent('#controls');
@@ -52,7 +54,7 @@ function changeStrokeWeight(value) {
 }
 
 function draw() {
-    if (mouseIsPressed) {
+    if (mouseIsPressed && canvas.isMouseOver) {
         stroke(stroke_colour);
         strokeWeight(stroke_weight);
         line(mouseX, mouseY, pmouseX, pmouseY);
