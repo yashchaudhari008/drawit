@@ -9,12 +9,8 @@ function setup() {
 
     canvas = createCanvas(windowWidth * (sFactor + 0.1), windowHeight * sFactor);
     canvas.parent('#canvasHolder');
-    canvas.elt.onmouseover = function() {
-        canvas.isMouseOver = true;
-    };
-    canvas.elt.onmouseout = function() {
-        canvas.isMouseOver = false;
-    };
+    canvas.elt.onmouseover = () => canvas.isMouseOver = true;
+    canvas.elt.onmouseout = () => canvas.isMouseOver = false;
     background(background_colour);
 
     createP('Background Colour: ').parent('#controls');
