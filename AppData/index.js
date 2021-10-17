@@ -53,8 +53,27 @@ function changeStrokeWeight(value) {
     }, 1000);
 }
 
+function mouseOnCanvas(){
+    var canvasWidth = windowWidth * (sFactor + 0.1);
+    var canvasHeight = windowHeight * sFactor;
+    if((mouseX < canvasWidth && mouseX > 0) && (mouseY < canvasHeight && mouseY > 0) ){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
 function draw() {
-    if (mouseIsPressed && canvas.isMouseOver) {
+
+    const brushTip = document.querySelector('#brushTip')
+    if(mouseOnCanvas()){
+        brushTip.setAttribute("style", "top: "+ (mouseY-(stroke_weight/2.0) - 0.4)  + "px; left: " + (mouseX-(stroke_weight/2.0)-0.4) +"px;");
+        brushTip.style.setProperty('background-color', stroke_colour);
+    }
+    
+    if (mouseIsPressed && mouseOnCanvas()) {
         stroke(stroke_colour);
         strokeWeight(stroke_weight);
         line(mouseX, mouseY, pmouseX, pmouseY);
