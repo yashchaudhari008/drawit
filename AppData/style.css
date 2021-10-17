@@ -97,6 +97,7 @@ input[type=color] {
 #canvasHolder {
     position: relative;
     cursor: none;
+    overflow: hidden;
 }
 
 #brushTip{
