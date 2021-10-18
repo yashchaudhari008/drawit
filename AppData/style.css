@@ -37,6 +37,7 @@ button {
     color: black;
 }
 
+button:focus,
 button:hover {
     background-color: black;
     color: white;
@@ -56,10 +57,16 @@ button:hover {
 input {
     background-color: transparent;
     border: none;
+    outline: 2px solid white;
+    outline-offset: -4px;
 }
 
 input[type=color] {
     cursor: pointer;
+}
+
+input:focus {
+    outline: none;
 }
 
 #container {
@@ -78,10 +85,6 @@ input[type=color] {
     border: 2px dashed black;
     transition: transform .6s;
     transition-delay: .3s;
-}
-
-#appName:hover {
-    transform: scale(1.1);
 }
 
 #pen_preview {
@@ -119,14 +122,26 @@ input[type=color] {
     margin: 1vmin;
 }
 
-.Div p {
-    padding-inline: 2vmin;
+label {
+    border: 1px solid black;
+    border-radius: 1vmin;
+    height: 100%;
+    padding: 1vmin;
 }
 
-.Div:hover {
+label + label {
+    margin-left: 15px;
+}
+
+label:focus-within,
+label:hover {
+    cursor: pointer;
     color: white;
     background-color: black;
-    cursor: default;
+    -webkit-transition: background-color 0.4s ease-out;
+    -moz-transition: background-color 0.4s ease-out;
+    -o-transition: background-color 0.4s ease-out;
+    transition: background-color 0.4s ease-out;
 }
 
 footer {
