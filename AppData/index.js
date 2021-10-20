@@ -54,20 +54,21 @@ function changeStrokeWeight(value) {
 }
 
 function mouseOnCanvas(){
-    var canvasWidth = windowWidth * (sFactor + 0.1);
-    var canvasHeight = windowHeight * sFactor;
+    let canvasWidth = windowWidth * (sFactor + 0.1);
+    let canvasHeight = windowHeight * sFactor;
+    const brushTip = document.querySelector('#brushTip');
     if((mouseX < canvasWidth && mouseX > 0) && (mouseY < canvasHeight && mouseY > 0) ){
+        if(brushTip.classList.contains('hide')){brushTip.classList.remove('hide')}
         return true;
     }
-    else{
-        return false;
-    }
+    if(!brushTip.classList.contains('hide')){brushTip.classList.add('hide')}
+    return false;
 }
 
 
 function draw() {
 
-    const brushTip = document.querySelector('#brushTip')
+    const brushTip = document.querySelector('#brushTip');
     if(mouseOnCanvas()){
         brushTip.setAttribute("style", "top: "+ (mouseY-(stroke_weight/2.0) - 0.4)  + "px; left: " + (mouseX-(stroke_weight/2.0)-0.4) +"px;");
         brushTip.style.setProperty('background-color', stroke_colour);
