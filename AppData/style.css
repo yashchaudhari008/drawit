@@ -57,8 +57,6 @@ button:hover {
 input {
     background-color: transparent;
     border: none;
-    outline: 2px solid white;
-    outline-offset: -4px;
 }
 
 input[type=color] {
@@ -136,6 +134,12 @@ input:focus {
     margin: 1vmin;
 }
 
+#background-control,
+#pen-control {
+    display: flex;
+    align-items: center;
+}
+
 label {
     border: 1px solid black;
     border-radius: 1vmin;
@@ -147,15 +151,17 @@ label + label {
     margin-left: 15px;
 }
 
-label:focus-within,
-label:hover {
-    cursor: pointer;
+label:focus-within {
     color: white;
     background-color: black;
     -webkit-transition: background-color 0.4s ease-out;
     -moz-transition: background-color 0.4s ease-out;
     -o-transition: background-color 0.4s ease-out;
     transition: background-color 0.4s ease-out;
+}
+
+label:hover {
+    cursor: pointer;
 }
 
 footer {
