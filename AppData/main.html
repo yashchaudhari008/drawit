@@ -34,9 +34,10 @@
                         Pen Colour:
                     </label>
                 </div>
-                <div class='Div' id='variables'> </div>
-                <button onclick="changeStrokeWeight(value = 1)"> + </button>
-                <button onclick="changeStrokeWeight(value = -1)"> - </button>
+                <div class='Div' id='variables' aria-live="polite" aria-atomic="true">
+                </div>
+                <button aria-label="Increase pen size" onclick="changeStrokeWeight(value = 1)"> + </button>
+                <button aria-label="Decrease pen size"  onclick="changeStrokeWeight(value = -1)"> - </button>
                 <p>Press Q & A to change pen-size.</p>
             </div>
 
