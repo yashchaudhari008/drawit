@@ -99,6 +99,20 @@ input:focus {
 
 #canvasHolder {
     position: relative;
+    cursor: none;
+    overflow: hidden;
+}
+
+#brushTip{
+    width: var(--pen-stroke);
+    height: var(--pen-stroke);
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    outline: white solid 1px;
+    border-radius: 50%;
+    background-color: var(--pen-strokeColour);
+    position: absolute;
 }
 
 #switch {

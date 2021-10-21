@@ -51,8 +51,28 @@ function changeStrokeWeight(value) {
     }, 1000);
 }
 
+function mouseOnCanvas(){
+    let canvasWidth = windowWidth * (sFactor + 0.1);
+    let canvasHeight = windowHeight * sFactor;
+    const brushTip = document.querySelector('#brushTip');
+    if((mouseX < canvasWidth && mouseX > 0) && (mouseY < canvasHeight && mouseY > 0) ){
+        if(brushTip.classList.contains('hide')){brushTip.classList.remove('hide')}
+        return true;
+    }
+    if(!brushTip.classList.contains('hide')){brushTip.classList.add('hide')}
+    return false;
+}
+
+
 function draw() {
-    if (mouseIsPressed && canvas.isMouseOver) {
+
+    const brushTip = document.querySelector('#brushTip');
+    if(mouseOnCanvas()){
+        brushTip.setAttribute("style", "top: "+ (mouseY-(stroke_weight/2.0) - 0.4)  + "px; left: " + (mouseX-(stroke_weight/2.0)-0.4) +"px;");
+        brushTip.style.setProperty('background-color', stroke_colour);
+    }
+    
+    if (mouseIsPressed && mouseOnCanvas()) {
         stroke(stroke_colour);
         strokeWeight(stroke_weight);
         line(mouseX, mouseY, pmouseX, pmouseY);
@@ -87,9 +107,11 @@ function keyTyped() {
         current_status ^= 1;
 
         if (current_status) {
+			document.getElementById("switch").textContent = "Press Z to toggle to Eraser"
             stroke_colour = pen_colour_picker.value();
         }
         else {
+			document.getElementById("switch").textContent = "Press Z to toggle to Pen"
             stroke_colour = background_colour_picker.value();
         }
     }
