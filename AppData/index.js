@@ -11,7 +11,7 @@ function setup() {
     canvas.parent('#canvasHolder');
     canvas.elt.onmouseover = () => canvas.isMouseOver = true;
     canvas.elt.onmouseout = () => canvas.isMouseOver = false;
-    background(background_colour);
+    setBackground(background_colour);
 
     createP('Background Colour: ').parent('#controls');
     background_colour_picker = createColorPicker(background_colour);
@@ -81,7 +81,7 @@ function draw() {
     }
 
     if (background_colour_picker.value() != background_colour) {
-        clearCanvas();
+        setBackground(background_colour_picker.value());
     }
 
     if (current_status) {
@@ -121,8 +121,11 @@ function keyTyped() {
 
 function clearCanvas() {
     clear();
-    background_colour = background_colour_picker.value();
-    background(background_colour)
+}
+
+function setBackground(colour) {
+    background_colour = colour;
+    document.querySelector('canvas').style.backgroundColor = colour;
 }
 
 function windowResized() {
@@ -141,4 +144,21 @@ function backToHome() {
         location.href = "../index.html";
     }
     else { }
+}
+
+function saveCanvasInternal(fileName) {
+    document.querySelector('canvas').style.backgroundColor = 'transparent';
+
+    const state = drawingContext.getImageData(0, 0, windowWidth * (sFactor + 0.1), windowHeight * sFactor);
+    const bkp = drawingContext.globalCompositeOperation;
+
+    drawingContext.globalCompositeOperation = 'destination-over';
+    drawingContext.fillStyle = background_colour;
+    drawingContext.fillRect(0, 0, windowWidth * (sFactor + 0.1), windowHeight * sFactor);
+    drawingContext.globalCompositeOperation = bkp;
+
+    saveCanvas(fileName);
+    drawingContext.putImageData(state, 0, 0);
+
+    document.querySelector('canvas').style.backgroundColor = background_colour;
 }
