@@ -4,7 +4,6 @@
         <title>Canvas - DrawIt!</title>
         <link rel="stylesheet" href="style.css">
         <script src="p5.min.js"></script>
-        <script src="index.js"></script>
         <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Comfortaa:normal">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -25,6 +24,8 @@
                     <button onclick="clearCanvas();">Clear Canvas</button>
                     <button onclick="saveCanvas('drawit_canvas');">Save Canvas</button>
                     <button onclick="backToHome()">Back to Home</button>
+                    <button id="full-screen" onclick="fullScreen();">Full Screen Mode</button>
+
                 </div>
                 <div class='Div' id='controls'> </div>
                 <div class='Div' id='variables'> </div>
@@ -42,5 +43,7 @@
         <footer style="text-align: center;">
             © Copyright 2020-21. Made with &#10084; by Yash Chaudhari.
         </footer>
+        <script src="index.js"></script>
+
     </body>
 </html>

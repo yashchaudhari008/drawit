@@ -1,6 +1,7 @@
 let sFactor = 0.85;
 let timer = null;
 let current_status; //1 for pen, 0 for eraser.
+let container = documentElement;
 function setup() {
     background_colour = 'white';
     stroke_colour = 'black';
@@ -45,8 +46,7 @@ function changeStrokeWeight(value) {
     document.getElementById("pen_preview").className = "show";
 
     // timer to hide stroke weight
-    if (timer !== null)
-        window.clearTimeout(timer);
+    if (timer !== nulcontainer.clearTimeout(timer));
 
     timer = setTimeout(function () {
         document.getElementById("pen_preview").className = "hide";
@@ -141,4 +141,15 @@ function backToHome() {
         location.href = "../index.html";
     }
     else { }
+}
+
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
 }
