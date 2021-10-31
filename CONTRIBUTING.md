@@ -4,7 +4,7 @@ We all love contributions from everyone and about everything that will make the 
 
 Everyone must follow the code of conduct thoughtbot's project codebases, issue trackers, mailing lists, etc.
 
-# 🔼 Pull Request Instructions
+## 🔼 Pull Request Instructions
 1. Find/Create an [Issue](https://github.com/yashchaudhari008/drawit/issues) to work on.
 2. `Fork` the repository.
 3. Create a new `test` branch from the `main` branch.
@@ -21,4 +21,4 @@ Everyone must follow the code of conduct thoughtbot's project codebases, issue t
 - - -
 <b><p align= "center">THANKS! Keep Contributing.✌</p></b>
 
-<b><p align = "center"><a href ="https://github.com/yashchaudhari008/drawit">`Back To The Repo Main Page.`</a></p></b>
+<b><p align = "center"><a href ="https://github.com/yashchaudhari008/drawit">`Back to Home`</a></p></b>
