@@ -102,21 +102,22 @@ function draw() {
 }
 
 function keyTyped() {
-    let pressed_key = key.toUpperCase();
+    const pressed_key = key.toUpperCase();
 
-    if (pressed_key == 'Z') {
-        //switch between pen and eraser
-        current_status ^= 1;
+    if (pressed_key != 'Z')
+        return;
 
-        if (current_status) {
-			document.getElementById("switch").textContent = "Press Z to toggle to Eraser"
-            stroke_colour = pen_colour_picker.value();
-        }
-        else {
-			document.getElementById("switch").textContent = "Press Z to toggle to Pen"
-            stroke_colour = background_colour_picker.value();
-        }
+    //switch between pen and eraser
+    current_status ^= 1;
+
+    if (current_status) {
+        document.getElementById("switch").textContent = "Press Z to toggle to Eraser"
+        noErase();
+        return;
     }
+    
+    document.getElementById("switch").textContent = "Press Z to toggle to Pen"
+    erase();
 }
 
 function clearCanvas() {
