@@ -148,18 +148,28 @@ function backToHome() {
 }
 
 function saveCanvasInternal(fileName) {
-    document.querySelector('canvas').style.backgroundColor = 'transparent';
+    const canvas = document.querySelector('canvas');
+    const width = windowWidth * (sFactor + 0.1);
+    const height = windowHeight * sFactor;
+    const originalDrawings = drawingContext.getImageData(0, 0, width, height);
+    const originalCompositeOperation = drawingContext.globalCompositeOperation;
+    
+    mergeBgAndDrawings(canvas, width, height);
+    
+    saveCanvas(fileName);
+    
+    separateBgAndDrawings(canvas, width, height, originalCompositeOperation, originalDrawings, background_colour);
+}
 
-    const state = drawingContext.getImageData(0, 0, windowWidth * (sFactor + 0.1), windowHeight * sFactor);
-    const bkp = drawingContext.globalCompositeOperation;
-
+function mergeBgAndDrawings(canvas, width, height) {
+    canvas.style.backgroundColor = 'transparent';
     drawingContext.globalCompositeOperation = 'destination-over';
     drawingContext.fillStyle = background_colour;
-    drawingContext.fillRect(0, 0, windowWidth * (sFactor + 0.1), windowHeight * sFactor);
-    drawingContext.globalCompositeOperation = bkp;
+    drawingContext.fillRect(0, 0, width, height);
+}
 
-    saveCanvas(fileName);
-    drawingContext.putImageData(state, 0, 0);
-
-    document.querySelector('canvas').style.backgroundColor = background_colour;
+function separateBgAndDrawings(canvas, width, height, originalCompositeOperation, originalDrawings, bgColor) {
+    drawingContext.globalCompositeOperation = originalCompositeOperation;
+    drawingContext.putImageData(originalDrawings, 0, 0);
+    canvas.style.backgroundColor = bgColor;
 }
