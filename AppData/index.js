@@ -149,26 +149,29 @@ function backToHome() {
 
 function saveCanvasInternal(fileName) {
     const canvas = document.querySelector('canvas');
+    
+    const { originalDrawings, originalCompositeOperation } = mergeBgAndDrawings(canvas, width, height);
+    
+    saveCanvas(fileName);
+    
+    separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings, background_colour);
+}
+
+function mergeBgAndDrawings(canvas) {
     const width = windowWidth * (sFactor + 0.1);
     const height = windowHeight * sFactor;
     const originalDrawings = drawingContext.getImageData(0, 0, width, height);
     const originalCompositeOperation = drawingContext.globalCompositeOperation;
-    
-    mergeBgAndDrawings(canvas, width, height);
-    
-    saveCanvas(fileName);
-    
-    separateBgAndDrawings(canvas, width, height, originalCompositeOperation, originalDrawings, background_colour);
-}
 
-function mergeBgAndDrawings(canvas, width, height) {
     canvas.style.backgroundColor = 'transparent';
     drawingContext.globalCompositeOperation = 'destination-over';
     drawingContext.fillStyle = background_colour;
     drawingContext.fillRect(0, 0, width, height);
+
+    return { originalDrawings, originalCompositeOperation };
 }
 
-function separateBgAndDrawings(canvas, width, height, originalCompositeOperation, originalDrawings, bgColor) {
+function separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings, bgColor) {
     drawingContext.globalCompositeOperation = originalCompositeOperation;
     drawingContext.putImageData(originalDrawings, 0, 0);
     canvas.style.backgroundColor = bgColor;
