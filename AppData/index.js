@@ -158,8 +158,8 @@ function saveCanvasInternal(fileName) {
 }
 
 function mergeBgAndDrawings(canvas) {
-    const width = windowWidth * (sFactor + 0.1);
-    const height = windowHeight * sFactor;
+    const width = canvas.width; //windowWidth * (sFactor + 0.1);
+    const height = canvas.height; //windowHeight * sFactor;
     const originalDrawings = drawingContext.getImageData(0, 0, width, height);
     const originalCompositeOperation = drawingContext.globalCompositeOperation;
 
