@@ -102,35 +102,30 @@ function draw() {
 function keyTyped() {
     const pressed_key = key.toUpperCase();
 
-    if (pressed_key != 'Z')
-        return;
+    if (pressed_key == 'Z') {
+        //switch between pen and eraser
+        current_status ^= 1;
 
-    //switch between pen and eraser
-    current_status ^= 1;
-
-    if (current_status) {
-        document.getElementById("switch").textContent = "Press Z to toggle to Eraser"
-        noErase();
-        return;
+        if (current_status) {
+            document.getElementById("switch").textContent = "Press Z to toggle to Eraser";
+            noErase();
+        }
+        else {
+            document.getElementById("switch").textContent = "Press Z to toggle to Pen";
+            erase();
+        }
     }
-    
-    document.getElementById("switch").textContent = "Press Z to toggle to Pen"
-    erase();
 }
 
-function clearCanvas() {
-    clear();
-}
+let clearCanvas = () => clear();
 
 function setBackground(colour) {
     background_colour = colour;
-    document.querySelector('canvas').style.backgroundColor = colour;
+    canvas.style("backgroundColor", colour);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth * (sFactor + 0.1), windowHeight * sFactor, true);
-    clearCanvas();
-
 }
 
 function fullScreen() {
@@ -145,32 +140,28 @@ function backToHome() {
     else { }
 }
 
-function saveCanvasInternal(fileName) {
-    const canvas = document.querySelector('canvas');
-    
-    const { originalDrawings, originalCompositeOperation } = mergeBgAndDrawings(canvas, width, height);
+function saveAsImage(fileName) {
+    const { originalDrawings, originalCompositeOperation } = mergeBgAndDrawings(canvas);
     
     saveCanvas(fileName);
     
-    separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings, background_colour);
+    separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings);
 }
 
 function mergeBgAndDrawings(canvas) {
-    const width = canvas.width; //windowWidth * (sFactor + 0.1);
-    const height = canvas.height; //windowHeight * sFactor;
-    const originalDrawings = drawingContext.getImageData(0, 0, width, height);
+    const originalDrawings = drawingContext.getImageData(0, 0, canvas.width, canvas.height);
     const originalCompositeOperation = drawingContext.globalCompositeOperation;
 
-    canvas.style.backgroundColor = 'transparent';
+    canvas.style("backgroundColor", "transparent");
     drawingContext.globalCompositeOperation = 'destination-over';
     drawingContext.fillStyle = background_colour;
-    drawingContext.fillRect(0, 0, width, height);
+    drawingContext.fillRect(0, 0, canvas.width, canvas.height);
 
     return { originalDrawings, originalCompositeOperation };
 }
 
-function separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings, bgColor) {
+function separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings) {
     drawingContext.globalCompositeOperation = originalCompositeOperation;
     drawingContext.putImageData(originalDrawings, 0, 0);
-    canvas.style.backgroundColor = bgColor;
+    canvas.style("backgroundColor", background_colour);
 }
