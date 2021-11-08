@@ -13,13 +13,11 @@ function setup() {
     canvas.elt.onmouseout = () => canvas.isMouseOver = false;
     setBackground(background_colour);
 
-    createP('Background Colour: ').parent('#controls');
     background_colour_picker = createColorPicker(background_colour);
-    background_colour_picker.parent('#controls')
+    background_colour_picker.parent('#background-control')
 
-    createP('Pen Colour: ').parent('#controls');
     pen_colour_picker = createColorPicker(stroke_colour);
-    pen_colour_picker.parent('#controls')
+    pen_colour_picker.parent('#pen-control')
 
     pen_size_display = createP('Pen Size: ' + stroke_weight);
     pen_size_display.parent('#variables');

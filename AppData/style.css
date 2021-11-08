@@ -37,6 +37,7 @@ button {
     color: black;
 }
 
+button:focus-visible,
 button:hover {
     background-color: black;
     color: white;
@@ -62,6 +63,7 @@ input[type=color] {
     cursor: pointer;
 }
 
+
 #container {
     display: flex;
     flex: 1;
@@ -78,10 +80,6 @@ input[type=color] {
     border: 2px dashed black;
     transition: transform .6s;
     transition-delay: .3s;
-}
-
-#appName:hover {
-    transform: scale(1.1);
 }
 
 #pen_preview {
@@ -133,14 +131,11 @@ input[type=color] {
     margin: 1vmin;
 }
 
-.Div p {
-    padding-inline: 2vmin;
-}
-
-.Div:hover {
-    color: white;
-    background-color: black;
-    cursor: default;
+#background-control,
+#pen-control {
+    display: flex;
+    align-items: center;
+    padding: 1vmin;
 }
 
 footer {
