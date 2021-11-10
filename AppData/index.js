@@ -11,7 +11,7 @@ function setup() {
     canvas.parent('#canvasHolder');
     canvas.elt.onmouseover = () => canvas.isMouseOver = true;
     canvas.elt.onmouseout = () => canvas.isMouseOver = false;
-    background(background_colour);
+    setBackground(background_colour);
 
     background_colour_picker = createColorPicker(background_colour);
     background_colour_picker.parent('#background-control')
@@ -79,7 +79,7 @@ function draw() {
     }
 
     if (background_colour_picker.value() != background_colour) {
-        clearCanvas();
+        setBackground(background_colour_picker.value());
     }
 
     if (current_status) {
@@ -100,33 +100,32 @@ function draw() {
 }
 
 function keyTyped() {
-    let pressed_key = key.toUpperCase();
+    const pressed_key = key.toUpperCase();
 
     if (pressed_key == 'Z') {
         //switch between pen and eraser
         current_status ^= 1;
 
         if (current_status) {
-			document.getElementById("switch").textContent = "Press Z to toggle to Eraser"
-            stroke_colour = pen_colour_picker.value();
+            document.getElementById("switch").textContent = "Press Z to toggle to Eraser";
+            noErase();
         }
         else {
-			document.getElementById("switch").textContent = "Press Z to toggle to Pen"
-            stroke_colour = background_colour_picker.value();
+            document.getElementById("switch").textContent = "Press Z to toggle to Pen";
+            erase();
         }
     }
 }
 
-function clearCanvas() {
-    clear();
-    background_colour = background_colour_picker.value();
-    background(background_colour)
+let clearCanvas = () => clear();
+
+function setBackground(colour) {
+    background_colour = colour;
+    canvas.style("backgroundColor", colour);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth * (sFactor + 0.1), windowHeight * sFactor, true);
-    clearCanvas();
-
 }
 
 function fullScreen() {
@@ -139,4 +138,68 @@ function backToHome() {
         location.href = "../index.html";
     }
     else { }
+}
+
+function saveAsImage(fileName) {
+    /**
+     * The p5 lib applies background as a Fill rectangle. To have more flexibility 
+     * the code was refactor to use background color as the canvas background
+     * color (CSS).
+     * 
+     * To save the image with the background, the code:
+     *  1 - Takes a backup of the current drawings.
+     *  2 - Uses the drawingContext's globalCompositeOperation as 'destination-over'. (New
+     *      shapes are drawn behind the existing canvas content)
+     *  3 - Applies the background color as a Fill rectangle operation.
+     *  4 - Call p5js's saveCanvas. (To download/save current canvas)
+     *  5 - Using the backup from step 1 canvas' state is restored (overwrite current 
+     *      canvas' state with the backup) and canvas' background.
+     * 
+     * @link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+     */
+
+    // Steps 1 to 3
+    const { originalDrawings, originalCompositeOperation } = mergeBgAndDrawings(canvas);
+    
+    // Step 4
+    saveCanvas(fileName);
+    
+    // Step 5
+    separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings);
+}
+
+function mergeBgAndDrawings(canvas) {
+    /**
+     * Using the drawingContext's globalCompositeOperation it merges the background, which is 
+     * applied as a Fill rectangle operation, into the current drawings and set the canvas'
+     * background color to transparent.
+     * 
+     * @param   {HTMLCanvasElement} canvas The canvas element to merge the background color.
+     * @return  {Object} An object with 2 properties: originalDrawings, originalCompositeOperation.
+     * 
+     * @link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+     */
+    const originalDrawings = drawingContext.getImageData(0, 0, canvas.width, canvas.height);
+    const originalCompositeOperation = drawingContext.globalCompositeOperation;
+
+    canvas.style("backgroundColor", "transparent");
+    drawingContext.globalCompositeOperation = 'destination-over';
+    drawingContext.fillStyle = background_colour;
+    drawingContext.fillRect(0, 0, canvas.width, canvas.height);
+
+    return { originalDrawings, originalCompositeOperation };
+}
+
+
+function separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings) {
+    /**
+     * Overwrite the given canvas content with the provided originalDrawings and set the canvas'
+     * background color to the global background_colour
+     * @param {HTMLCanvasElement} canvas The canvas element to overwrite content by the provided state
+     * @param {String} originalCompositeOperation The canvas element to overwrite content by the provided state
+     * @param {ImageData} originalDrawings The canvas element to overwrite content by the provided state
+     */
+    drawingContext.globalCompositeOperation = originalCompositeOperation;
+    drawingContext.putImageData(originalDrawings, 0, 0);
+    canvas.style("backgroundColor", background_colour);
 }
