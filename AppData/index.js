@@ -143,40 +143,42 @@ function backToHome() {
 function saveAsImage(fileName) {
     /**
      * The p5 lib applies background as a Fill rectangle. To have more flexibility 
-     * the code was changed to start using the background color as the canvas background
+     * the code was refactor to use background color as the canvas background
      * color (CSS).
-     * To save the image with the background, the code:
-     *  1 - Takes a backup of the current drawings
-     *  2 - Uses the drawingContext's globalCompositeOperation as 'destination-over' (New
-     * shapes are drawn behind the existing canvas content.)
-     *  3 - applies the background color as a Fill rectangle operation
-     *  4 - Call p5's saveCanvas (to generate the image and download the canvas' content)
-     *  5 - Using the backup taken from step 1, restore the Canvas' state (overwrite current 
-     * canvas' state with the backup) and canvas' background.
      * 
-     * References:
-     * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+     * To save the image with the background, the code:
+     *  1 - Takes a backup of the current drawings.
+     *  2 - Uses the drawingContext's globalCompositeOperation as 'destination-over'. (New
+     *      shapes are drawn behind the existing canvas content)
+     *  3 - Applies the background color as a Fill rectangle operation.
+     *  4 - Call p5js's saveCanvas. (To download/save current canvas)
+     *  5 - Using the backup from step 1 canvas' state is restored (overwrite current 
+     *      canvas' state with the backup) and canvas' background.
+     * 
+     * @link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
      */
 
-    //Steps 1 to 3
+    // Steps 1 to 3
     const { originalDrawings, originalCompositeOperation } = mergeBgAndDrawings(canvas);
     
-    //Step 4
+    // Step 4
     saveCanvas(fileName);
     
-    //Step 5
+    // Step 5
     separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings);
 }
 
-/**
- * Using the drawingContext's globalCompositeOperation it merges the background, which is 
- * applied as a Fill rectangle operation, into the current drawings and set the canvas'
- * background color to transparent.
- * @param {HTMLCanvasElement} canvas The canvas element to merge the background color into
- * @return {Object} An object with 2 properties: originalDrawings, originalCompositeOperation
- */
 function mergeBgAndDrawings(canvas) {
-    //Reference: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+    /**
+     * Using the drawingContext's globalCompositeOperation it merges the background, which is 
+     * applied as a Fill rectangle operation, into the current drawings and set the canvas'
+     * background color to transparent.
+     * 
+     * @param   {HTMLCanvasElement} canvas The canvas element to merge the background color.
+     * @return  {Object} An object with 2 properties: originalDrawings, originalCompositeOperation.
+     * 
+     * @link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+     */
     const originalDrawings = drawingContext.getImageData(0, 0, canvas.width, canvas.height);
     const originalCompositeOperation = drawingContext.globalCompositeOperation;
 
@@ -188,15 +190,15 @@ function mergeBgAndDrawings(canvas) {
     return { originalDrawings, originalCompositeOperation };
 }
 
-/**
- * Overwrite the given canvas content with the provided originalDrawings and set the canvas'
- * background color to the global background_colour
- * @param {HTMLCanvasElement} canvas The canvas element to overwrite content by the provided state
- * @param {String} originalCompositeOperation The canvas element to overwrite content by the provided state
- * @param {ImageData} originalDrawings The canvas element to overwrite content by the provided state
- * @return void
- */
+
 function separateBgAndDrawings(canvas, originalCompositeOperation, originalDrawings) {
+    /**
+     * Overwrite the given canvas content with the provided originalDrawings and set the canvas'
+     * background color to the global background_colour
+     * @param {HTMLCanvasElement} canvas The canvas element to overwrite content by the provided state
+     * @param {String} originalCompositeOperation The canvas element to overwrite content by the provided state
+     * @param {ImageData} originalDrawings The canvas element to overwrite content by the provided state
+     */
     drawingContext.globalCompositeOperation = originalCompositeOperation;
     drawingContext.putImageData(originalDrawings, 0, 0);
     canvas.style("backgroundColor", background_colour);
