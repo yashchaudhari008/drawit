@@ -64,18 +64,18 @@ function mouseOnCanvas(){
 }
 
 
+function touchMoved() {
+    stroke(stroke_colour);
+    strokeWeight(stroke_weight);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+    return false;
+}
 function draw() {
 
     const brushTip = document.querySelector('#brushTip');
     if(mouseOnCanvas()){
         brushTip.setAttribute("style", "top: "+ (mouseY-(stroke_weight/2.0) - 0.4)  + "px; left: " + (mouseX-(stroke_weight/2.0)-0.4) +"px;");
         brushTip.style.setProperty('background-color', stroke_colour);
-    }
-    
-    if (mouseIsPressed && mouseOnCanvas()) {
-        stroke(stroke_colour);
-        strokeWeight(stroke_weight);
-        line(mouseX, mouseY, pmouseX, pmouseY);
     }
 
     if (background_colour_picker.value() != background_colour) {
